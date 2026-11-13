@@ -5,7 +5,7 @@ from ..db import get_sesion
 from ..services import read_user, create_user, update_user, read_all_user, verificar_jwt_user, dellet_user
 from ..schemas import UsuarioCreate, UsuarioUpdate
 
-user_route = APIRouter(dependencies=Depends(verificar_jwt_user))
+user_route = APIRouter(dependencies=[Depends(verificar_jwt_user)])
 
 @user_route.get("/")
 async def read_all_user_get(session: Session = Depends(get_sesion)):

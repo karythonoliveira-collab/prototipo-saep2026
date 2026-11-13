@@ -5,7 +5,7 @@ from ..db import get_sesion
 from ..services import read_estoque, read_estoque_nome, saida_estoques, dellet_estoque, create_estoque, update_estoque, entrada_estoques, read_all_estoque, verificar_jwt_user
 from ..schemas import EstoqueCreate, EstoqueUpdate, MoveEstoque
 
-estoque_route = APIRouter(dependencies=Depends(verificar_jwt_user))
+estoque_route = APIRouter(dependencies=[Depends(verificar_jwt_user)])
 
 @estoque_route.get("/")
 async def read_all_estoque_get(session: Session = Depends(get_sesion)):
@@ -35,7 +35,7 @@ async def estoque_updade_put(base: EstoqueUpdate,session: Session = Depends(get_
 async def saida_estoque(id: int, base: MoveEstoque,session: Session = Depends(get_sesion), id_user :int = Depends(verificar_jwt_user)):
     return saida_estoques(id_user, id, base.qtn_move, session )
 
-@estoque_route.psot("/{id}")
+@estoque_route.post("/{id}")
 async def entrada_estoque(id: int, base: MoveEstoque,session: Session = Depends(get_sesion), id_user :int = Depends(verificar_jwt_user)):
     return entrada_estoques(id_user, id, base.qtn_move, session )
 

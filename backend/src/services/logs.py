@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 
-from ..models import Log
+from ..models import Logs
 from .erros import NoteAllEstoque, ErroInesperado
 
 def read_all_logs(session: Session) -> dict:
     try:
-        query = session.query(Log).all()
+        query = session.query(Logs).all()
 
         if query is not None: raise NoteAllEstoque(session)
 

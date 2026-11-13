@@ -8,8 +8,8 @@ class Logs(Base):
     __tablename__ = "logs"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
-    id_usuario = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"), primary_key=True, nullable=False)
-    id_estoque = Column(Integer, ForeignKey("estoque.id", ondelete="CASCADE"), primary_key=True, nullable=False,)
+    id_usuario = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"),  nullable=False)
+    id_estoque = Column(Integer, ForeignKey("estoque.id", ondelete="CASCADE"),  nullable=False,)
     dt_acao = Column(DATETIME, nullable=False, default=datetime.now())
     is_retirada = Column(Boolean, nullable=False, default=0)
 
