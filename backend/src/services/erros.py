@@ -25,6 +25,15 @@ class NoteAllUser(HTTPException):
             status_code=status.HTTP_404_NOT_FOUND,
             detail="Não há clientes no banco",
         )
+
+class NoteUserSenha(HTTPException):
+    def __init__(self, session: Session):
+        session.rollback()
+
+        super().__init__(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="Não há User Verificado com esse Email"
+        )
 #endregion
 
 #region estoque
@@ -102,4 +111,21 @@ class VauleInvalido(HTTPException):
 
 
 #endregion
+
+#region jwt
+class JustAdmin(HTTPException):
+    def __init__(self):
+        super().__init__(
+            status_code=403,
+            detail= "Essa opeção só pode ser excutada por admin."
+        )
+
+class JwtInvalido(HTTPException):
+    def __init__(self):
+        super().__init__(
+            status_code=401,
+            detail="JWT inválido"
+        )
+#endregion
+
 

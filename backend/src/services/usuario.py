@@ -2,7 +2,8 @@ from sqlalchemy.orm import Session
 from sqlalchemy.exc import IntegrityError
 
 from ..models import Usuario
-from .erros import DuplicationUser, NoteUser, RequestInvalida, NoteAllUser, ErroInesperado
+from .erros import DuplicationUser, NoteUser, RequestInvalida, NoteAllUser, ErroInesperado, NoteUserSenha
+from .jwt import criar_token
 
 #region CRUD
 
@@ -99,4 +100,28 @@ def read_all_user(session: Session) -> dict:
 
 #endregion
 
+def login_user(email: str, senha: str, session: Session) -> dict:
+    try:    
+        query = session.query(Usuario).filter_by(email = email).first()  # type: ignore
+
+
+        if query is None: raise NoteUserSenha(session)
+
+        if query.verificarSenha(senha) and query.is_admin == 1:  
+            jwt = criar_token(query.id, is_admin= True)
+        
+        elif query.verificarSenha(senha): 
+            jwt = criar_token(query.id)
+
+        else: raise NoteUserSenha(session)
+
+        return {
+                "access_token": jwt,
+                "token_type": "bearer"
+            }
+
+    except (NoteUserSenha): raise
+
+    except Exception as e:
+        raise ErroInesperado(e, session)
 

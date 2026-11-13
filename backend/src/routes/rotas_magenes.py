@@ -1,6 +1,7 @@
 from fastapi.responses import RedirectResponse
 from fastapi import APIRouter
 from .usuario import user_route
+from .auth import auth_route
 
 manger_route = APIRouter()
 
@@ -10,8 +11,15 @@ async def home_to_doc():
     return RedirectResponse(url='/docs')
 
 manger_route.include_router(
+    auth_route,
+    prefix="/auth",
+    tags=["atuh", "user"]
+)
+
+manger_route.include_router(
     user_route,
-    prefix="/user"
+    prefix="/user",
+    tags=["user"]
 )
 
 
