@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Menu Principal - SAEP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topo">
+    <h1>SENAI | Controle de Estoque</h1>
+    <div>
+      <span>Usuário: <strong id="usuario-nome"></strong></span>
+      <button onclick="deslogar()">Sair</button>
+    </div>
+  </div>
+
+  <div class="painel">
+    <h2>Menu Principal</h2>
+    <div class="menu-opcoes">
+      <a href="estoque.html" class="cartao-menu">Gestão de Estoque</a>
+    </div>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script>
+    checarSessao();
+  </script>
+</body>
+</html>

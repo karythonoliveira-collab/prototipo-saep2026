@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Login - SAEP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="login-box">
+    <h2>Sistema SAEP</h2>
+    <div id="aviso" class="msg-erro"></div>
+    <form id="form-login">
+      <div class="campo" style="margin-bottom: 12px;">
+        <label>E-mail:</label>
+        <input type="email" id="email" required>
+      </div>
+      <div class="campo" style="margin-bottom: 16px;">
+        <label>Senha:</label>
+        <input type="password" id="senha" required>
+      </div>
+      <button type="submit" class="btn-acao" style="width: 100%;">Entrar</button>
+    </form>
+  </div>
+  <script src="js/auth.js"></script>
+  <script src="js/login.js"></script>
+</body>
+</html>

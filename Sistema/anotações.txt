@@ -1,0 +1,13 @@
+Monitorar entrada saida de materiais,aviso de estoque critico, excesso de estoque, 
+
+Cimentos, tintas, argamassa, 
+
+prazo de validade, variação de cor, textura, peso, unidade de medida, 
+
+Aplicações:
+
+Fundações, acabamento extrutural, 
+
+
+CRUD de produtos e usuarios
+

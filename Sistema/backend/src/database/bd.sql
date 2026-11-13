@@ -7,15 +7,19 @@ DROP TABLE IF EXISTS movimentacao CASCADE;
 DROP TABLE IF EXISTS produto CASCADE;
 
 CREATE TABLE produto (
-    id_produto INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    id_produto INT AUTO_INCREMENT PRIMARY KEY,
     nome VARCHAR(100) NOT NULL,
     quantidade_estoque INTEGER NOT NULL,
     valor_unitario NUMERIC(10,2) NOT NULL,
     data_cadastro DATE NOT NULL DEFAULT CURRENT_DATE
 );
 
+DROP TABLE produto
+
+DROP TABLE movimentacao
+
 CREATE TABLE movimentacao (
-    id_movimentacao INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    id_movimentacao INT AUTO_INCREMENT PRIMARY KEY,
     tipo VARCHAR(10) NOT NULL CHECK (tipo IN ('ENTRADA', 'SAIDA')),
     quantidade INTEGER NOT NULL,
     id_produto INTEGER NOT NULL REFERENCES produto(id_produto),
