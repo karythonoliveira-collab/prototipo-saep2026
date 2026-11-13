@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Gestão de Estoque - SAEP</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="topo">
+    <h1>Gestão de Estoque</h1>
+    <div>
+      <span>Usuário: <strong id="usuario-nome"></strong></span>
+      <a href="index.html">Voltar</a>
+      <button onclick="deslogar()">Sair</button>
+    </div>
+  </div>
+
+  <div id="alerta-critico" class="msg-erro"></div>
+  <div id="aviso-movimentacao" class="msg-sucesso"></div>
+
+  <div class="painel">
+    <h2>Movimentar Estoque</h2>
+    <form id="form-movimentacao">
+      <div class="linha">
+        <div class="campo" style="flex: 2;">
+          <label>Produto (Ordem Alfabética) *</label>
+          <select id="select-produto" required></select>
+        </div>
+        <div class="campo">
+          <label>Operação *</label>
+          <select id="tipo-movimentacao" required>
+            <option value="entrada">Entrada</option>
+            <option value="saida">Saída</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="linha">
+        <div class="campo">
+          <label>Quantidade *</label>
+          <input type="number" step="0.01" min="0.01" id="qtd-movimentacao" required>
+        </div>
+        <div class="campo">
+          <label>Data da Movimentação *</label>
+          <input type="date" id="data-movimentacao" required>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-acao">Confirmar Movimentação</button>
+    </form>
+  </div>
+
+  <div class="painel">
+    <h2>Estoque Atual (Ordem Alfabética)</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Produto</th>
+          <th>Saldo Atual</th>
+          <th>Mínimo</th>
+          <th>Máximo</th>
+          <th>Unidade</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="lista-estoque">
+        <tr>
+          <td colspan="7" style="text-align:center;">Carregando inventário...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="painel">
+    <h2>Histórico de Movimentações</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Operação</th>
+          <th>Quantidade</th>
+          <th>Produto</th>
+          <th>Responsável</th>
+        </tr>
+      </thead>
+      <tbody id="lista-logs">
+        <tr>
+          <td colspan="6" style="text-align:center;">Carregando histórico...</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <script src="js/auth.js"></script>
+  <script src="js/estoque.js"></script>
+</body>
+</html>
