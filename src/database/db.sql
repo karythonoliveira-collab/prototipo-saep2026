@@ -8,7 +8,7 @@ DROP TABLE IF EXISTS products CASCADE;
 
 CREATE TABLE products (
     id INTEGER PRIMARY KEY,
-    description VARCHAR(100) NOT NULL,
+    description VARCHAR(120) NOT NULL,
     quantity INTEGER NOT NULL,
     value NUMERIC(10,2) NOT NULL,
     created_at DATE NOT NULL DEFAULT CURRENT_DATE
