@@ -1,5 +1,5 @@
 from .estoque import Estoque
-from .logs import Log
+from .logs import Logs
 from .usuario import Usuario
 
 from ..db import Base, engine
