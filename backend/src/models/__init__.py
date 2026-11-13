@@ -1,11 +1,11 @@
 from .estoque import Estoque
-from .log import Log
+from .logs import Log
 from .usuario import Usuario
 
 from ..db import Base, engine
 
 
-__all__ = ["Estoque", "Log", "Usuario"]
+__all__ = ["Estoque", "Logs", "Usuario"]
 
 
 #criar todas as tabelas

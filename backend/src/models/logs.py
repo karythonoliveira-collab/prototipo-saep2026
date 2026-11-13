@@ -4,7 +4,7 @@ from datetime import datetime
 
 from ..db import Base
 
-class Log(Base):
+class Logs(Base):
     __tablename__ = "logs"
 
     id = Column(Integer, primary_key=True, autoincrement=True)
