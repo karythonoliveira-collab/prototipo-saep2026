@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, ForeignKey, Integer, Boolean
+from sqlalchemy import Column, DATETIME, ForeignKey, Integer, Boolean
 from sqlalchemy.orm import relationship
 from datetime import datetime
 
@@ -10,7 +10,7 @@ class Logs(Base):
     id = Column(Integer, primary_key=True, autoincrement=True)
     id_usuario = Column(Integer, ForeignKey("usuario.id", ondelete="CASCADE"), primary_key=True, nullable=False)
     id_estoque = Column(Integer, ForeignKey("estoque.id", ondelete="CASCADE"), primary_key=True, nullable=False,)
-    dt_acao = Column(DateTime, nullable=False, default=datetime.now())
+    dt_acao = Column(DATETIME, nullable=False, default=datetime.now())
     is_retirada = Column(Boolean, nullable=False, default=0)
 
     usuario = relationship("Usuario", back_populates="logs")

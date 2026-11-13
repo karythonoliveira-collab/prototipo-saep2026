@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DateTime, Integer, Numeric, String
+from sqlalchemy import Column, DATETIME, Integer, DECIMAL, String
 from sqlalchemy.orm import relationship
 
 from datetime import datetime
@@ -10,9 +10,9 @@ class Estoque(Base):
 
     id = Column(Integer, primary_key=True, autoincrement=True)
     nome = Column(String(120), nullable=False, unique=True)
-    preco_uni = Column(Numeric(10, 2), nullable=False)
+    preco_uni = Column(DECIMAL(10, 2), nullable=False)
     qtn = Column(Integer, nullable=False)
-    dt_cads = Column(DateTime, nullable=False, default=datetime.now)
+    dt_cads = Column(DATETIME, nullable=False, default=datetime.now)
 
     logs = relationship("Log", back_populates="estoque")
 
