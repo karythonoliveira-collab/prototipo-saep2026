@@ -6,9 +6,10 @@ from pydantic import BaseModel, ConfigDict
 class QueryLogSchema(BaseModel):
     id: Optional[int] = None
     type: Optional[Literal["entry", "exit"]] = None
-    quantity: Optional[int] = None
-    datetime: Optional[datetime] = None
-
+    minimum_quantity: Optional[int] = None
+    maximum_quantity: Optional[int] = None
+    created_before: Optional[datetime] = None
+    created_after: Optional[datetime] = None
     user_id: Optional[int] = None
     product_id: Optional[int] = None
 

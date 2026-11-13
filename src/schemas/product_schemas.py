@@ -23,6 +23,13 @@ class QueryProductSchema(BaseModel):
 
 
 
+class UpdateProductSchema(BaseModel):
+    id: int
+    description: Optional[str] = None
+    quantity: Optional[int] = None
+    value: Optional[Decimal] = None
+
+
 class ResponseProductSchema(BaseModel):
     model_config = ConfigDict(
         from_attributes=True
