@@ -2,6 +2,8 @@ from fastapi.responses import RedirectResponse
 from fastapi import APIRouter
 from .usuario import user_route
 from .auth import auth_route
+from .estoque import estoque_route
+from .logs import logs_route
 
 manger_route = APIRouter()
 
@@ -20,6 +22,18 @@ manger_route.include_router(
     user_route,
     prefix="/user",
     tags=["user"]
+)
+
+manger_route.include_router(
+    estoque_route,
+    prefix="/estoque",
+    tags=["estoque"]
+)
+
+manger_route.include_router(
+    logs_route,
+    prefix="/logs_route",
+    tags=["movementação"]
 )
 
 
