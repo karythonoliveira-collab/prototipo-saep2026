@@ -4,7 +4,8 @@ from database import Session
 from models import User, Product, Log
 from schemas import QueryLogSchema, ResponseLogSchema
 from errors import (
-    UserNotFoundError, 
+    UserNotFoundError,
+    UserHasNoPermissionError,
     InvalidProductQuantityError, 
     InvalidQueryError,
     LogNotFoundError,
@@ -35,6 +36,9 @@ def create_log(current_user: User, current_product: Product, initial_quantity: i
 def list_logs(current_user: User, params: QueryLogSchema) -> list[Log]:
     if current_user == None:
         raise UserNotFoundError
+
+    if current_user.role != "admin":
+        raise UserHasNoPermissionError
     
     if (params.minimum_quantity != None) and (params.minimum_quantity < 0):
         raise InvalidProductQuantityError
